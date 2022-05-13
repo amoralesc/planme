@@ -20,14 +20,17 @@
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/list_popular_plans"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="0dp"
 		android:layout_marginTop="16dp"
 		android:clipChildren="false"
 		android:clipToPadding="false"
 		android:orientation="vertical"
 		android:paddingHorizontal="16dp"
-		android:paddingBottom="40dp"
+		android:paddingBottom="60dp"
 		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/title_popular_plans"
 		tools:listitem="@layout/plan_list_item" />
 
