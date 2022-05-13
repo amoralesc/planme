@@ -36,4 +36,6 @@
 	<string name="location">Location</string>
 	<string name="see_on_the_map"><u>See on the map</u></string>
 	<string name="products_and_services">Products and Services</string>
+	<string name="date">Date</string>
+	<string name="time">Time</string>
 </resources>

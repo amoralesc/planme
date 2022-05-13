@@ -11,14 +11,17 @@
 
 	<ScrollView
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="match_parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
 
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:clipChildren="false"
 			android:clipToPadding="false"
-			android:paddingBottom="70dp">
+			android:paddingBottom="120dp">
 
 			<ImageView
 				android:id="@+id/cover_image"
@@ -171,7 +174,7 @@
 								android:layout_height="20dp"
 								app:srcCompat="@drawable/ic_star"
 								app:tint="#ffd700"
-								tools:ignore="ContentDescription" />
+								tools:ignore="ContentDescription,ImageContrastCheck" />
 
 						</LinearLayout>
 
@@ -192,10 +195,12 @@
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="8dp"
+						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
 						app:layout_constraintTop_toBottomOf="@id/title_description"
 						tools:maxLines="10"
-						tools:text="@tools:sample/lorem/random" />
+						tools:text="@tools:sample/lorem/random[3]" />
 
 				</androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -354,12 +359,94 @@
 			android:layout_height="wrap_content"
 			android:orientation="vertical"
 			android:paddingHorizontal="16dp"
-			android:paddingVertical="8dp">
+			android:paddingTop="16dp"
+			android:paddingBottom="8dp">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@drawable/dark_gray_rounded_stroke_background"
+				android:elevation="4dp">
+
+				<ImageView
+					android:id="@+id/image_date"
+					android:layout_width="16dp"
+					android:layout_height="16dp"
+					android:layout_marginStart="8dp"
+					android:padding="1dp"
+					app:layout_constraintBottom_toBottomOf="@id/date"
+					app:layout_constraintEnd_toStartOf="@id/date"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="@id/date"
+					app:srcCompat="@drawable/ic_calendar"
+					app:tint="@color/dark_gray"
+					tools:ignore="ContentDescription" />
+
+				<EditText
+					android:id="@+id/date"
+					android:layout_width="0dp"
+					android:layout_height="40dp"
+					android:layout_marginStart="8dp"
+					android:background="@drawable/blank_text_input_background"
+					android:focusable="false"
+					android:hint="@string/date"
+					android:importantForAutofill="no"
+					android:inputType="date"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toStartOf="@id/vertical_divider"
+					app:layout_constraintHorizontal_weight="1"
+					app:layout_constraintStart_toEndOf="@id/image_date"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+
+				<com.google.android.material.divider.MaterialDivider
+					android:id="@+id/vertical_divider"
+					android:layout_width="0.7dp"
+					android:layout_height="0dp"
+					android:layout_marginStart="8dp"
+					app:dividerColor="@color/dark_gray"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toStartOf="@id/image_time"
+					app:layout_constraintStart_toEndOf="@id/date"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<ImageView
+					android:id="@+id/image_time"
+					android:layout_width="16dp"
+					android:layout_height="16dp"
+					android:layout_marginStart="8dp"
+					app:layout_constraintBottom_toBottomOf="@id/time"
+					app:layout_constraintEnd_toStartOf="@id/time"
+					app:layout_constraintStart_toEndOf="@id/vertical_divider"
+					app:layout_constraintTop_toTopOf="@id/time"
+					app:srcCompat="@drawable/ic_clock"
+					app:tint="@color/dark_gray"
+					tools:ignore="ContentDescription" />
+
+				<EditText
+					android:id="@+id/time"
+					android:layout_width="0dp"
+					android:layout_height="40dp"
+					android:layout_marginHorizontal="8dp"
+					android:background="@drawable/blank_text_input_background"
+					android:focusable="false"
+					android:hint="@string/time"
+					android:importantForAutofill="no"
+					android:inputType="time"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintHorizontal_weight="1"
+					app:layout_constraintStart_toEndOf="@id/image_time"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
 
 			<Button
 				android:id="@+id/reserve"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp"
 				android:text="@string/reserve"
 				tools:ignore="TextContrastCheck" />
 
