@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.javeriana.planme.R
 import com.javeriana.planme.ui.data.FormResult
 import com.javeriana.planme.util.isEmailValid
@@ -27,7 +28,17 @@ class SignUpViewModel : ViewModel() {
 			mAuth.createUserWithEmailAndPassword(email, password)
 				.addOnCompleteListener { task ->
 					if (task.isSuccessful) {
-						Log.d(SignUpFragment.TAG, "Signed up successfully")
+						// Add display name
+						val user = mAuth.currentUser
+						user?.updateProfile(
+							UserProfileChangeRequest.Builder()
+								.setDisplayName(name)
+								.build()
+						)
+
+						Log.d(
+							SignUpFragment.TAG, "Signed up successfully"
+						)
 
 						_signUpResult.value = FormResult(
 							success = true, error = null

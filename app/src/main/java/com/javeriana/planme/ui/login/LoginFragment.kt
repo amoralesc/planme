@@ -78,7 +78,9 @@ class LoginFragment : Fragment() {
 	}
 
 	private fun goToHomeScreen() {
-
+		findNavController().navigate(
+			R.id.action_loginFragment_to_popularPlansFragment
+		)
 	}
 
 	private fun goToSignUpScreen() {

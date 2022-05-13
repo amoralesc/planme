@@ -20,4 +20,9 @@
 	<string name="signup_failed_empty_fields">All fields must be filled</string>
 	<string name="password_mismatch">The passwords must match</string>
 	<string name="sign_up_failed">Sign up failed</string>
+	<string name="popular">Popular</string>
+	<string name="search">Search</string>
+	<string name="popular_plans_near_you">Popular plans near you</string>
+	<string name="account">Account</string>
+	<string name="logout">Logout</string>
 </resources>

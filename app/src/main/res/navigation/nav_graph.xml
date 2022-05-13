@@ -13,10 +13,65 @@
 		<action
 			android:id="@+id/action_loginFragment_to_signUpFragment"
 			app:destination="@id/signUpFragment" />
+		<action
+			android:id="@+id/action_loginFragment_to_popularPlansFragment"
+			app:destination="@id/popularPlansFragment"
+			app:popUpTo="@id/popularPlansFragment"
+			app:popUpToInclusive="true" />
 	</fragment>
 	<fragment
 		android:id="@+id/signUpFragment"
 		android:name="com.javeriana.planme.ui.signup.SignUpFragment"
 		android:label="Sign Up"
 		tools:layout="@layout/fragment_sign_up" />
+	<fragment
+		android:id="@+id/popularPlansFragment"
+		android:name="com.javeriana.planme.ui.home.PopularPlansFragment"
+		android:label="@string/app_name"
+		tools:layout="@layout/fragment_popular_plans" >
+		<action
+			android:id="@+id/action_popularPlansFragment_to_loginFragment"
+			app:destination="@id/loginFragment"
+			app:popUpTo="@id/loginFragment"
+			app:popUpToInclusive="true" />
+		<action
+			android:id="@+id/action_popularPlansFragment_to_planMeFragment"
+			app:destination="@id/planMeFragment" />
+		<action
+			android:id="@+id/action_popularPlansFragment_to_searchPlanFragment"
+			app:destination="@id/searchPlanFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/planMeFragment"
+		android:name="com.javeriana.planme.ui.home.PlanMeFragment"
+		android:label="@string/app_name"
+		tools:layout="@layout/fragment_plan_me" >
+		<action
+			android:id="@+id/action_planMeFragment_to_loginFragment"
+			app:destination="@id/loginFragment"
+			app:popUpTo="@id/loginFragment"
+			app:popUpToInclusive="true" />
+		<action
+			android:id="@+id/action_planMeFragment_to_popularPlansFragment"
+			app:destination="@id/popularPlansFragment" />
+		<action
+			android:id="@+id/action_planMeFragment_to_searchPlanFragment"
+			app:destination="@id/searchPlanFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/searchPlanFragment"
+		android:name="com.javeriana.planme.ui.home.SearchPlanFragment"
+		android:label="@string/app_name">
+		<action
+			android:id="@+id/action_searchPlanFragment_to_planMeFragment"
+			app:destination="@id/planMeFragment" />
+		<action
+			android:id="@+id/action_searchPlanFragment_to_popularPlansFragment"
+			app:destination="@id/popularPlansFragment" />
+		<action
+			android:id="@+id/action_searchPlanFragment_to_loginFragment"
+			app:destination="@id/loginFragment"
+			app:popUpTo="@id/loginFragment"
+			app:popUpToInclusive="true" />
+	</fragment>
 </navigation>
