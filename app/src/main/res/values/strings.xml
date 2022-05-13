@@ -39,4 +39,5 @@
 	<string name="date">Date</string>
 	<string name="time">Time</string>
 	<string name="reservations">Reservations</string>
+	<string name="size">Size</string>
 </resources>

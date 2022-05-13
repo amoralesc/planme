@@ -75,12 +75,12 @@
 	<fragment
 		android:id="@+id/planDetailFragment"
 		android:name="com.javeriana.planme.ui.plan.PlanDetailFragment"
-		android:label="fragment_plan_detail"
+		android:label="@string/app_name"
 		tools:layout="@layout/fragment_plan_detail" />
 	<fragment
 		android:id="@+id/reservationsFragment"
 		android:name="com.javeriana.planme.ui.home.ReservationsFragment"
-		android:label="ReservationsFragment" >
+		android:label="@string/app_name">
 		<action
 			android:id="@+id/action_reservationsFragment_to_planMeFragment"
 			app:destination="@id/planMeFragment"

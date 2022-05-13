@@ -6,6 +6,29 @@
 	android:layout_height="match_parent"
 	tools:context=".ui.home.ReservationsFragment">
 
+	<TextView
+		android:id="@+id/title_reservations"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_margin="16dp"
+		android:text="@string/reservations"
+		android:textAppearance="?textAppearanceHeadline5"
+		android:textColor="?colorPrimary"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/reservations"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:clipChildren="false"
+		android:clipToPadding="false"
+		android:orientation="vertical"
+		android:paddingHorizontal="16dp"
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		app:layout_constraintTop_toBottomOf="@id/title_reservations" />
+
 	<com.google.android.material.bottomnavigation.BottomNavigationView
 		android:id="@+id/bottom_navigation"
 		style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
