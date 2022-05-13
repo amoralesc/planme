@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:clipChildren="false"
+	android:clipToPadding="false"
+	android:foreground="?attr/selectableItemBackground"
+	android:paddingHorizontal="16dp"
+	android:paddingTop="8dp">
+
+	<ImageView
+		android:id="@+id/image_calendar"
+		android:layout_width="20dp"
+		android:layout_height="20dp"
+		app:layout_constraintBottom_toBottomOf="@id/reservation_date"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@id/reservation_date"
+		app:srcCompat="@drawable/ic_calendar"
+		tools:ignore="ContentDescription" />
+
+	<TextView
+		android:id="@+id/reservation_date"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:textAppearance="?textAppearanceBody1"
+		app:layout_constraintStart_toEndOf="@id/image_calendar"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:text="@tools:sample/date/ddmmyy" />
+
+	<ImageView
+		android:id="@+id/image_clock"
+		android:layout_width="20dp"
+		android:layout_height="20dp"
+		android:layout_marginStart="20dp"
+		app:layout_constraintBottom_toBottomOf="@id/reservation_time"
+		app:layout_constraintStart_toEndOf="@id/reservation_date"
+		app:layout_constraintTop_toTopOf="@id/reservation_time"
+		app:srcCompat="@drawable/ic_clock"
+		tools:ignore="ContentDescription" />
+
+	<TextView
+		android:id="@+id/reservation_time"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:textAppearance="?textAppearanceBody1"
+		app:layout_constraintStart_toEndOf="@id/image_clock"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:text="12:00 p.m." />
+
+	<ImageView
+		android:id="@+id/image_avatar"
+		android:layout_width="20dp"
+		android:layout_height="20dp"
+		android:layout_marginStart="20dp"
+		app:layout_constraintBottom_toBottomOf="@id/reservation_size"
+		app:layout_constraintStart_toEndOf="@id/reservation_time"
+		app:layout_constraintTop_toTopOf="@id/reservation_size"
+		app:srcCompat="@drawable/ic_avatar"
+		tools:ignore="ContentDescription" />
+
+	<TextView
+		android:id="@+id/reservation_size"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:textAppearance="?textAppearanceBody1"
+		app:layout_constraintStart_toEndOf="@id/image_avatar"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:text="5" />
+
+	<TextView
+		android:id="@+id/reservation_plan_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:textAppearance="?textAppearanceBody1"
+		android:textStyle="bold"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/reservation_date"
+		tools:text="@tools:sample/lorem" />
+
+	<TextView
+		android:id="@+id/reservation_plan_address_line_1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="4dp"
+		android:textAppearance="?textAppearanceBody1"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/reservation_plan_name"
+		tools:text="CL 83 # 13A - 25" />
+
+	<TextView
+		android:id="@+id/reservation_plan_address_line_2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?textAppearanceBody2"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/reservation_plan_address_line_1"
+		tools:text="Zona T Bogotá" />
+
+	<com.google.android.material.divider.MaterialDivider
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_marginTop="8dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/reservation_plan_address_line_2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
