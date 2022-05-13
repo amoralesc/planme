@@ -38,3 +38,9 @@ fun formatDateFromMillis(millis: Long): String {
 
 	return formatter.format(calendar.time)
 }
+
+fun dateToString(date: Date): String {
+	val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+	return formatter.format(date)
+}

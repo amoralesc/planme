@@ -1,12 +1,15 @@
 package com.javeriana.planme.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.javeriana.planme.R
 import com.javeriana.planme.databinding.FragmentPlanMeBinding
+import com.javeriana.planme.ui.data.SharedViewModel
 
 class PlanMeFragment : Fragment() {
 
@@ -17,6 +20,8 @@ class PlanMeFragment : Fragment() {
 	// Binding objects to access the view elements
 	private var _binding: FragmentPlanMeBinding? = null
 	private val binding get() = _binding!!
+
+	private val sharedViewModel: SharedViewModel by activityViewModels()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -35,6 +40,8 @@ class PlanMeFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		setupBottomNavigation()
+
+
 	}
 
 	private fun onAccountSelected() {

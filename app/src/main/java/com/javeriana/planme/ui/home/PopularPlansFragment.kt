@@ -1,12 +1,16 @@
 package com.javeriana.planme.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.javeriana.planme.R
 import com.javeriana.planme.databinding.FragmentPopularPlansBinding
+import com.javeriana.planme.ui.adapter.PlanItemAdapter
+import com.javeriana.planme.ui.data.SharedViewModel
 
 class PopularPlansFragment : Fragment() {
 
@@ -17,6 +21,8 @@ class PopularPlansFragment : Fragment() {
 	// Binding objects to access the view elements
 	private var _binding: FragmentPopularPlansBinding? = null
 	private val binding get() = _binding!!
+
+	private val sharedViewModel: SharedViewModel by activityViewModels()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -35,6 +41,21 @@ class PopularPlansFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		setupBottomNavigation()
+
+		binding.apply {
+			lifecycleOwner = viewLifecycleOwner
+			viewModel = sharedViewModel
+			listPopularPlans.adapter = PlanItemAdapter { plan ->
+				sharedViewModel.setSelectedPlan(plan)
+				onPlanSelected()
+			}
+		}
+	}
+
+	private fun onPlanSelected() {
+		findNavController().navigate(
+			R.id.action_popularPlansFragment_to_planDetailFragment
+		)
 	}
 
 	private fun onAccountSelected() {

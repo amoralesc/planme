@@ -51,6 +51,4 @@
 	<string name="permissions_location_message">
 		The app needs location access to show to show you your location on the map
 	</string>
-	<!-- TODO: Remove or change this placeholder text -->
-	<string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
