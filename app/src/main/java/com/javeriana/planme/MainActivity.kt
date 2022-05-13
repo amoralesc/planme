@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 					R.id.loginFragment,
 					R.id.popularPlansFragment,
 					R.id.planMeFragment,
-					R.id.searchPlanFragment
+					R.id.reservationsFragment
 				)
 			)
 		setupActionBarWithNavController(navController, appBarConfiguration)

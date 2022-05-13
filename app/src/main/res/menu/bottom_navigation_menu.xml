@@ -11,8 +11,8 @@
 		android:icon="@drawable/ic_celebration"
 		android:title="@string/app_name" />
 	<item
-		android:id="@+id/page_search"
+		android:id="@+id/page_reservations"
 		android:enabled="true"
-		android:icon="@drawable/ic_search"
-		android:title="@string/search" />
+		android:icon="@drawable/ic_calendar"
+		android:title="@string/reservations" />
 </menu>

@@ -82,9 +82,9 @@ class PlanMeFragment : Fragment() {
 				R.id.page_plan_me -> {
 					false
 				}
-				R.id.page_search -> {
+				R.id.page_reservations -> {
 					findNavController().navigate(
-						R.id.action_planMeFragment_to_searchPlanFragment
+						R.id.action_planMeFragment_to_reservationsFragment
 					)
 					false
 				}

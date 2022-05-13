@@ -6,15 +6,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.javeriana.planme.R
-import com.javeriana.planme.databinding.FragmentSearchPlanBinding
+import com.javeriana.planme.databinding.FragmentReservationsBinding
 
-class SearchPlanFragment : Fragment() {
+class ReservationsFragment : Fragment() {
 	companion object {
-		const val TAG = "SearchPlanFragment"
+		const val TAG = "ReservationsFragment"
 	}
 
 	// Binding objects to access the view elements
-	private var _binding: FragmentSearchPlanBinding? = null
+	private var _binding: FragmentReservationsBinding? = null
 	private val binding get() = _binding!!
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +27,7 @@ class SearchPlanFragment : Fragment() {
 		savedInstanceState: Bundle?
 	): View {
 		// Inflate the layout and binding for this fragment
-		_binding = FragmentSearchPlanBinding.inflate(inflater, container, false)
+		_binding = FragmentReservationsBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -43,7 +43,7 @@ class SearchPlanFragment : Fragment() {
 	private fun onLogoutSelected() {
 		FirebaseAuth.getInstance().signOut()
 		findNavController().navigate(
-			R.id.action_searchPlanFragment_to_loginFragment
+			R.id.action_reservationsFragment_to_loginFragment
 		)
 	}
 
@@ -68,23 +68,23 @@ class SearchPlanFragment : Fragment() {
 	}
 
 	private fun setupBottomNavigation() {
-		binding.bottomNavigation.selectedItemId = R.id.page_search
+		binding.bottomNavigation.selectedItemId = R.id.page_reservations
 
 		binding.bottomNavigation.setOnItemSelectedListener { item ->
 			when (item.itemId) {
 				R.id.page_popular -> {
 					findNavController().navigate(
-						R.id.action_searchPlanFragment_to_popularPlansFragment
+						R.id.action_reservationsFragment_to_popularPlansFragment
 					)
 					false
 				}
 				R.id.page_plan_me -> {
 					findNavController().navigate(
-						R.id.action_searchPlanFragment_to_planMeFragment
+						R.id.action_reservationsFragment_to_planMeFragment
 					)
 					false
 				}
-				R.id.page_search -> {
+				R.id.page_reservations -> {
 					false
 				}
 				else -> false

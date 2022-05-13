@@ -82,9 +82,9 @@ class PopularPlansFragment : Fragment() {
 					)
 					false
 				}
-				R.id.page_search -> {
+				R.id.page_reservations -> {
 					findNavController().navigate(
-						R.id.action_popularPlansFragment_to_searchPlanFragment
+						R.id.action_popularPlansFragment_to_reservationsFragment
 					)
 					false
 				}
