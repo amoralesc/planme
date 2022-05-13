@@ -1,8 +1,370 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:clipChildren="false"
+	android:clipToPadding="false"
+	android:orientation="vertical"
 	tools:context=".ui.plan.PlanDetailFragment">
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:clipChildren="false"
+			android:clipToPadding="false"
+			android:paddingBottom="70dp">
+
+			<ImageView
+				android:id="@+id/cover_image"
+				android:layout_width="match_parent"
+				android:layout_height="180dp"
+				android:importantForAccessibility="no"
+				android:scaleType="centerCrop"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:ignore="ContentDescription,ImageContrastCheck"
+				tools:srcCompat="@tools:sample/avatars" />
+
+			<com.google.android.material.imageview.ShapeableImageView
+				android:id="@+id/logo_image"
+				android:layout_width="80dp"
+				android:layout_height="80dp"
+				android:layout_marginStart="24dp"
+				android:layout_marginTop="24dp"
+				android:contentDescription="@string/app_name"
+				android:elevation="4dp"
+				android:importantForAccessibility="no"
+				android:scaleType="fitCenter"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+				tools:ignore="ImageContrastCheck"
+				tools:srcCompat="@tools:sample/avatars" />
+
+			<TextView
+				android:id="@+id/name"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="24dp"
+				android:ellipsize="end"
+				android:letterSpacing="-0.02"
+				android:lines="2"
+				android:maxLines="1"
+				android:textAppearance="?textAppearanceHeadline4"
+				android:textColor="@color/white"
+				android:textStyle="bold"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/logo_image"
+				app:layout_constraintTop_toTopOf="@id/logo_image"
+				tools:ignore="TextContrastCheck"
+				tools:text="@tools:sample/lorem[4]" />
+
+			<TextView
+				android:id="@+id/more_info"
+				android:layout_width="0dp"
+				android:layout_height="30dp"
+				android:layout_marginEnd="24dp"
+				android:clickable="true"
+				android:focusable="true"
+				android:gravity="center_vertical"
+				android:lines="1"
+				android:maxLines="1"
+				android:text="@string/see_more_info"
+				android:textAppearance="?textAppearanceSubtitle1"
+				android:textColor="@color/white"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="@id/name"
+				app:layout_constraintTop_toBottomOf="@id/name"
+				tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+
+			<com.google.android.material.card.MaterialCardView
+				android:id="@+id/description_container"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="16dp"
+				android:layout_marginTop="16dp"
+				android:elevation="4dp"
+				app:cardCornerRadius="16dp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/more_info">
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:padding="16dp">
+
+					<androidx.cardview.widget.CardView
+						android:id="@+id/favorite_container"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:clickable="true"
+						android:contentDescription="@string/set_favorite_plan"
+						android:elevation="4dp"
+						android:focusable="true"
+						android:foreground="?attr/selectableItemBackground"
+						app:cardCornerRadius="50dp"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintTop_toTopOf="parent"
+						tools:ignore="TouchTargetSizeCheck">
+
+						<FrameLayout
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:padding="6dp">
+
+							<ImageView
+								android:id="@+id/favorite"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:scaleType="fitCenter"
+								app:srcCompat="@drawable/ic_heart"
+								tools:ignore="ContentDescription" />
+
+						</FrameLayout>
+
+					</androidx.cardview.widget.CardView>
+
+					<androidx.cardview.widget.CardView
+						android:id="@+id/review_number_container"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginEnd="12dp"
+						android:clipChildren="false"
+						android:clipToPadding="false"
+						android:elevation="2dp"
+						android:foreground="?attr/selectableItemBackground"
+						app:cardCornerRadius="8dp"
+						app:layout_constraintBottom_toBottomOf="@id/favorite_container"
+						app:layout_constraintEnd_toStartOf="@id/favorite_container"
+						app:layout_constraintTop_toTopOf="@id/favorite_container">
+
+						<LinearLayout
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:clipChildren="false"
+							android:clipToPadding="false"
+							android:orientation="horizontal"
+							android:paddingVertical="3dp"
+							android:paddingStart="6dp"
+							android:paddingEnd="4dp"
+							tools:ignore="UseCompoundDrawables">
+
+							<TextView
+								android:id="@+id/review_number"
+								android:layout_width="wrap_content"
+								android:layout_height="match_parent"
+								android:layout_gravity="center_vertical"
+								android:layout_marginEnd="2dp"
+								android:textAppearance="?textAppearanceBody2"
+								tools:text="4.5" />
+
+							<ImageView
+								android:layout_width="20dp"
+								android:layout_height="20dp"
+								app:srcCompat="@drawable/ic_star"
+								app:tint="#ffd700"
+								tools:ignore="ContentDescription" />
+
+						</LinearLayout>
+
+					</androidx.cardview.widget.CardView>
+
+					<TextView
+						android:id="@+id/title_description"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/description"
+						android:textAppearance="?textAppearanceHeadline6"
+						app:layout_constraintBottom_toBottomOf="@id/favorite_container"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="@id/favorite_container" />
+
+					<TextView
+						android:id="@+id/description"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="8dp"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintTop_toBottomOf="@id/title_description"
+						tools:maxLines="10"
+						tools:text="@tools:sample/lorem/random" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+			</com.google.android.material.card.MaterialCardView>
+
+			<TextView
+				android:id="@+id/title_location"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:text="@string/location"
+				android:textAppearance="?textAppearanceHeadline6"
+				app:layout_constraintStart_toStartOf="@id/description_container"
+				app:layout_constraintTop_toBottomOf="@id/description_container" />
+
+			<TextView
+				android:id="@+id/map_location"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:clickable="true"
+				android:focusable="true"
+				android:text="@string/see_on_the_map"
+				android:textAppearance="?textAppearanceSubtitle1"
+				app:layout_constraintBottom_toBottomOf="@id/title_location"
+				app:layout_constraintEnd_toEndOf="@id/description_container"
+				app:layout_constraintTop_toTopOf="@id/title_location"
+				tools:ignore="TouchTargetSizeCheck" />
+
+			<TextView
+				android:id="@+id/address_line_1"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:textAppearance="?textAppearanceBody1"
+				app:layout_constraintEnd_toEndOf="@id/description_container"
+				app:layout_constraintStart_toStartOf="@id/description_container"
+				app:layout_constraintTop_toBottomOf="@id/title_location"
+				tools:text="CL 83 # 13A - 32" />
+
+			<TextView
+				android:id="@+id/address_line_2"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:textAppearance="?textAppearanceBody2"
+				app:layout_constraintEnd_toEndOf="@id/description_container"
+				app:layout_constraintStart_toStartOf="@id/description_container"
+				app:layout_constraintTop_toBottomOf="@id/address_line_1"
+				tools:text="Zona T Bogotá" />
+
+			<TextView
+				android:id="@+id/title_pictures"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:text="@string/pictures"
+				android:textAppearance="?textAppearanceHeadline6"
+				app:layout_constraintStart_toStartOf="@id/description_container"
+				app:layout_constraintTop_toBottomOf="@id/address_line_2" />
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/pictures"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:clipChildren="false"
+				android:clipToPadding="false"
+				android:contentDescription="@string/list_plan_pictures"
+				android:nestedScrollingEnabled="true"
+				android:orientation="horizontal"
+				android:paddingHorizontal="16dp"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/title_pictures"
+				tools:listitem="@layout/plan_picture_list_item" />
+
+			<TextView
+				android:id="@+id/title_reviews"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:text="@string/reviews"
+				android:textAppearance="?textAppearanceHeadline6"
+				app:layout_constraintStart_toStartOf="@id/description_container"
+				app:layout_constraintTop_toBottomOf="@id/pictures" />
+
+			<TextView
+				android:id="@+id/all_reviews"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:clickable="true"
+				android:focusable="true"
+				android:text="@string/see_all_reviews"
+				android:textAppearance="?textAppearanceSubtitle1"
+				app:layout_constraintBottom_toBottomOf="@id/title_reviews"
+				app:layout_constraintEnd_toEndOf="@id/description_container"
+				app:layout_constraintTop_toTopOf="@id/title_reviews"
+				tools:ignore="TouchTargetSizeCheck" />
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/reviews"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:nestedScrollingEnabled="false"
+				android:orientation="vertical"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/title_reviews"
+				tools:itemCount="3"
+				tools:listitem="@layout/plan_review_list_item" />
+
+			<TextView
+				android:id="@+id/title_products_and_services"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:text="@string/products_and_services"
+				android:textAppearance="?textAppearanceHeadline6"
+				app:layout_constraintStart_toStartOf="@id/description_container"
+				app:layout_constraintTop_toBottomOf="@id/reviews" />
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/products"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:nestedScrollingEnabled="false"
+				android:orientation="vertical"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/title_products_and_services"
+				tools:listitem="@layout/plan_product_list_item" />
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</ScrollView>
+
+	<androidx.cardview.widget.CardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:elevation="4dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<com.google.android.material.divider.MaterialDivider
+			android:layout_width="match_parent"
+			android:layout_height="0.4dp" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="8dp">
+
+			<Button
+				android:id="@+id/reserve"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/reserve"
+				tools:ignore="TextContrastCheck" />
+
+		</LinearLayout>
+
+	</androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

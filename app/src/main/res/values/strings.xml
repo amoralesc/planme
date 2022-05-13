@@ -25,4 +25,15 @@
 	<string name="popular_plans_near_you">Popular plans near you</string>
 	<string name="account">Account</string>
 	<string name="logout">Logout</string>
+	<string name="reserve">Reserve</string>
+	<string name="see_more_info"><u>See more info</u></string>
+	<string name="set_favorite_plan">Mark plan as favorite</string>
+	<string name="description">Description</string>
+	<string name="pictures">Pictures</string>
+	<string name="list_plan_pictures">List of plan\'s pictures</string>
+	<string name="reviews">Reviews</string>
+	<string name="see_all_reviews"><u>See all reviews</u></string>
+	<string name="location">Location</string>
+	<string name="see_on_the_map"><u>See on the map</u></string>
+	<string name="products_and_services">Products and Services</string>
 </resources>
