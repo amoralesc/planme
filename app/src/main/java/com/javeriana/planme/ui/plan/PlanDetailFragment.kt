@@ -7,10 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.request.RequestOptions.bitmapTransform
+import com.javeriana.planme.R
 import com.javeriana.planme.databinding.FragmentPlanDetailBinding
-import com.javeriana.planme.ui.adapter.PlanItemAdapter
 import com.javeriana.planme.ui.adapter.ReviewItemAdapter
 import com.javeriana.planme.ui.data.SharedViewModel
+import jp.wasabeef.glide.transformations.BlurTransformation
+import jp.wasabeef.glide.transformations.ColorFilterTransformation
 
 class PlanDetailFragment : Fragment() {
 
@@ -53,8 +59,50 @@ class PlanDetailFragment : Fragment() {
 				addressLine2.text = plan.location?.address_line_2 ?: ""
 			}
 
+			val multiTransformation = MultiTransformation(
+				BlurTransformation(25),
+				ColorFilterTransformation(R.color.black)
+			)
+
+			Glide.with(requireContext())
+				.load(sharedViewModel.selectedPlan.value?.cover_img)
+				.placeholder(R.drawable.placeholder_dark_rectangle)
+				.error(R.drawable.placeholder_dark_rectangle)
+				.apply(bitmapTransform(multiTransformation))
+				.into(coverImage)
+
+			Glide.with(requireContext())
+				.load(sharedViewModel.selectedPlan.value?.logo_img)
+				.placeholder(R.drawable.placeholder_white_circle)
+				.error(R.drawable.placeholder_white_circle)
+				.into(logoImage)
+
 			reviews.adapter = ReviewItemAdapter()
+
+			// Set the click listeners
+			allReviews.setOnClickListener {
+				onAllReviewsClicked()
+			}
+			mapLocation.setOnClickListener {
+				onMapLocationClicked()
+			}
 		}
+	}
+
+	private fun onMapLocationClicked() {
+		val location = sharedViewModel.selectedPlan.value?.location ?: return
+		val action = PlanDetailFragmentDirections
+			.actionPlanDetailFragmentToPlanMapsLocationFragment(
+				location = location
+			)
+
+		findNavController().navigate(action)
+	}
+
+	private fun onAllReviewsClicked() {
+		findNavController().navigate(
+			R.id.action_planDetailFragment_to_planReviewsFragment
+		)
 	}
 
 	override fun onDestroyView() {

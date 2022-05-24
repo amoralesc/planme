@@ -19,10 +19,14 @@ import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.javeriana.planme.R
+import com.javeriana.planme.data.model.CustomLocation
 import com.javeriana.planme.databinding.FragmentPlanMapsLocationBinding
 import com.javeriana.planme.util.LOCATION_REQUEST_FAST_INTERVAL
 import com.javeriana.planme.util.LOCATION_REQUEST_INTERVAL
@@ -31,6 +35,7 @@ class PlanMapsLocationFragment : Fragment(), OnMapReadyCallback {
 
 	companion object {
 		const val TAG = "PlanMapsLocationFragment"
+		const val ARGUMENT_LOCATION = "location"
 	}
 
 	// Binding objects to access the view elements
@@ -38,6 +43,8 @@ class PlanMapsLocationFragment : Fragment(), OnMapReadyCallback {
 	private val binding get() = _binding!!
 
 	private var mMap: GoogleMap? = null
+
+	private lateinit var location: CustomLocation
 
 	private val hasLocationPermissions = MutableLiveData(false)
 	private val isLocationEnabled = MutableLiveData(false)
@@ -52,6 +59,11 @@ class PlanMapsLocationFragment : Fragment(), OnMapReadyCallback {
 				}
 			}
 		}
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		location = arguments?.getParcelable(ARGUMENT_LOCATION)!!
+	}
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -272,6 +284,20 @@ class PlanMapsLocationFragment : Fragment(), OnMapReadyCallback {
 	@SuppressLint("MissingPermission")
 	override fun onMapReady(googleMap: GoogleMap) {
 		mMap = googleMap
+
+		// Add marker at location
+		if (location.lat != null && location.lng != null) {
+			val latLng = LatLng(location.lat!!, location.lng!!)
+			mMap!!.addMarker(
+				MarkerOptions()
+					.position(latLng)
+					.title(location.address_line_1 ?: "")
+					.snippet(location.address_line_2 ?: "")
+			)
+			mMap!!.moveCamera(
+				CameraUpdateFactory.newLatLngZoom(latLng, 15f)
+			)
+		}
 
 		if (canAccessLocation.value == true) {
 			mMap!!.isMyLocationEnabled = true

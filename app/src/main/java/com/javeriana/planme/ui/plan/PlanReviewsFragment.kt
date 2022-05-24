@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.javeriana.planme.databinding.FragmentPlanReviewsBinding
+import com.javeriana.planme.ui.adapter.ReviewItemAdapter
+import com.javeriana.planme.ui.data.SharedViewModel
 
 class PlanReviewsFragment : Fragment() {
 
@@ -16,6 +19,8 @@ class PlanReviewsFragment : Fragment() {
 	// Binding objects to access the view elements
 	private var _binding: FragmentPlanReviewsBinding? = null
 	private val binding get() = _binding!!
+
+	private val sharedViewModel: SharedViewModel by activityViewModels()
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +33,12 @@ class PlanReviewsFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+
+		binding.apply {
+			lifecycleOwner = viewLifecycleOwner
+			viewModel = sharedViewModel
+			reviews.adapter = ReviewItemAdapter()
+		}
 	}
 
 	override fun onDestroyView() {
