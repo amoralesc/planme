@@ -71,6 +71,12 @@
 			app:destination="@id/reservationsFragment"
 			app:popUpTo="@id/popularPlansFragment"
 			app:popUpToInclusive="true" />
+		<action
+			android:id="@+id/action_planMeFragment_to_matchPlanFragment"
+			app:destination="@id/matchPlanFragment" />
+		<action
+			android:id="@+id/action_planMeFragment_to_swipeModeFragment"
+			app:destination="@id/swipeModeFragment" />
 	</fragment>
 	<fragment
 		android:id="@+id/planDetailFragment"
@@ -117,4 +123,23 @@
 		android:name="com.javeriana.planme.ui.plan.PlanReviewsFragment"
 		android:label="@string/app_name"
 		tools:layout="@layout/fragment_plan_reviews" />
+	<fragment
+		android:id="@+id/matchPlanFragment"
+		android:name="com.javeriana.planme.ui.planme.match.MatchPlanFragment"
+		android:label="@string/app_name"
+		tools:layout="@layout/fragment_match_plan" >
+		<action
+			android:id="@+id/action_matchPlanFragment_to_matchResultsFragment"
+			app:destination="@id/matchResultsFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/swipeModeFragment"
+		android:name="com.javeriana.planme.ui.planme.swipe.SwipeModeFragment"
+		android:label="@string/app_name"
+		tools:layout="@layout/fragment_swipe_mode" />
+	<fragment
+		android:id="@+id/matchResultsFragment"
+		android:name="com.javeriana.planme.ui.planme.match.MatchResultsFragment"
+		android:label="@string/app_name"
+		tools:layout="@layout/fragment_match_results" />
 </navigation>

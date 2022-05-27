@@ -56,4 +56,56 @@
 	<string name="reservation_size">Tamaño de la reserva</string>
 	<string name="reservation_failed_empty_fields">All fields must be filled</string>
 	<string name="reservation_created">Reservation created successfully</string>
+	<string name="plan_me">Plan Me</string>
+	<string name="match_plan">Match a plan for me</string>
+	<string name="swipe_mode">Swipe Mode</string>
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="do_you_feel_money">Do you feel money?</string>
+	<string name="i_need_a_plan_for_something">I need a plan for something…</string>
+	<string name="serious">Serious</string>
+	<string name="fun">Fun!</string>
+	<string name="is_it_romantic">And is it romantic?</string>
+	<string name="yes">Yes</string>
+	<string name="no">No</string>
+	<string name="no_way">No way</string>
+	<string name="heck_yeah">Heck yeah!</string>
+	<string name="friends">Friends</string>
+	<string name="solo">Solo</string>
+	<string name="coworkers_boss_professional">Coworkers / Boss / Professional</string>
+	<string name="partner">A date</string>
+	<string name="my_group_is">My group is…</string>
+	<string name="family">Family</string>
+	<string name="what_about_money">What about money?</string>
+	<string name="low_prices_only">Low prices only</string>
+	<string name="i_can_spend">I can spend</string>
+	<string name="dont_care_about_price">I don\'t care about price / I\'m flexible</string>
+	<string name="is_it_a_special_occasion">Is it a special occasion?</string>
+	<string name="more_specific">Hey, I want to be more specific!</string>
+	<string name="gastronomy">Gastronomy</string>
+	<string name="restaurant">Restaurant</string>
+	<string name="cafe">Cafe</string>
+	<string name="bar">Bar</string>
+	<string name="disco">Disco</string>
+	<string name="nightlife">Nightlife</string>
+	<string name="international">International</string>
+	<string name="fast_food">Fast food</string>
+	<string name="fancy">Fancy</string>
+	<string name="posh">Posh</string>
+	<string name="european">European</string>
+	<string name="american">American</string>
+	<string name="asian">Asian</string>
+	<string name="for_kids">For kids</string>
+	<string name="_18">+18</string>
+
+	<string-array name="special_occasions">
+		<item>No</item>
+		<item>Kid birthday</item>
+		<item>Adult birthday</item>
+		<item>First date</item>
+		<item>Anniversary</item>
+		<item>Baby shower</item>
+		<item>Graduation</item>
+		<item>Wedding</item>
+	</string-array>
 </resources>

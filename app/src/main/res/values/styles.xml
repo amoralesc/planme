@@ -5,4 +5,10 @@
 		<item name="cornerSize">50%</item>
 	</style>
 
+	<!-- Chips -->
+	<style name="Widget.PlanMe.Chip.Choice" parent="Widget.MaterialComponents.Chip.Choice">
+		<!-- Chip background color selector -->
+		<item name="android:textColor">@color/chip_text_color_state_list</item>
+		<item name="chipBackgroundColor">@color/chip_color_state_list</item>
+	</style>
 </resources>

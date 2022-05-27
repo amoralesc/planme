@@ -41,7 +41,26 @@ class PlanMeFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 		setupBottomNavigation()
 
+		binding.apply {
+			matchPlan.setOnClickListener {
+				onMatchPlanClicked()
+			}
+			swipeMode.setOnClickListener {
+				onSwipeModeClicked()
+			}
+		}
+	}
 
+	private fun onMatchPlanClicked() {
+		findNavController().navigate(
+			R.id.action_planMeFragment_to_matchPlanFragment
+		)
+	}
+
+	private fun onSwipeModeClicked() {
+		findNavController().navigate(
+			R.id.action_planMeFragment_to_swipeModeFragment
+		)
 	}
 
 	private fun onAccountSelected() {

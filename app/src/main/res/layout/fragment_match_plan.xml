@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".ui.planme.match.MatchPlanFragment">
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:clipToPadding="false"
+			android:paddingHorizontal="16dp"
+			android:paddingBottom="70dp">
+
+			<!-- FUN QUESTION -->
+
+			<TextView
+				android:id="@+id/fun_question"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:text="@string/i_need_a_plan_for_something"
+				android:textAppearance="?textAppearanceSubtitle1"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_goneMarginTop="16dp" />
+
+			<SeekBar
+				android:id="@+id/fun_seekbar"
+				style="@style/Widget.AppCompat.SeekBar.Discrete"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:indeterminate="false"
+				android:max="2"
+				android:progress="1"
+				android:progressBackgroundTint="@color/red_700"
+				android:progressTint="@color/red_500"
+				android:thumbTint="?colorPrimary"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/fun_question"
+				app:tickVisible="false" />
+
+			<TextView
+				android:id="@+id/fun_answer_low"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/serious"
+				android:textAppearance="?textAppearanceBody2"
+				app:layout_constraintStart_toStartOf="@id/fun_seekbar"
+				app:layout_constraintTop_toBottomOf="@id/fun_seekbar" />
+
+			<TextView
+				android:id="@+id/fun_answer_high"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/fun"
+				android:textAppearance="?textAppearanceBody2"
+				app:layout_constraintEnd_toEndOf="@id/fun_seekbar"
+				app:layout_constraintTop_toBottomOf="@id/fun_seekbar" />
+
+			<!-- COMPANIONSHIP QUESTION -->
+
+			<TextView
+				android:id="@+id/companionship_question"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:text="@string/my_group_is"
+				android:textAppearance="?textAppearanceSubtitle1"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/fun_answer_low" />
+
+			<RadioGroup
+				android:id="@+id/companionship_radio_group"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="9dp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/companionship_question">
+
+				<RadioButton
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:buttonTint="?colorPrimary"
+					android:minHeight="0dp"
+					android:text="@string/solo"
+					android:textAppearance="?textAppearanceBody2"
+					tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+
+				<RadioButton
+					android:id="@+id/companionship_date"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:buttonTint="?colorPrimary"
+					android:minHeight="0dp"
+					android:text="@string/partner"
+					android:textAppearance="?textAppearanceBody2"
+					tools:ignore="TouchTargetSizeCheck" />
+
+				<RadioButton
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:buttonTint="?colorPrimary"
+					android:minHeight="0dp"
+					android:text="@string/friends"
+					android:textAppearance="?textAppearanceBody2"
+					tools:ignore="TouchTargetSizeCheck" />
+
+				<RadioButton
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:buttonTint="?colorPrimary"
+					android:minHeight="0dp"
+					android:text="@string/family"
+					android:textAppearance="?textAppearanceBody2"
+					tools:ignore="TouchTargetSizeCheck" />
+
+				<RadioButton
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:buttonTint="?colorPrimary"
+					android:minHeight="0dp"
+					android:text="@string/coworkers_boss_professional"
+					android:textAppearance="?textAppearanceBody2"
+					tools:ignore="TouchTargetSizeCheck" />
+
+			</RadioGroup>
+
+			<!-- ROMANTIC QUESTION -->
+
+			<TextView
+				android:id="@+id/romantic_question"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:text="@string/is_it_romantic"
+				android:textAppearance="?textAppearanceSubtitle1"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/companionship_radio_group" />
+
+			<RadioGroup
+				android:id="@+id/romantic_radio_group"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/romantic_question">
+
+				<RadioButton
+					android:id="@+id/romantic_radio_no"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:buttonTint="?colorPrimary"
+					android:text="@string/no"
+					android:textAppearance="?textAppearanceBody2"
+					tools:ignore="TextContrastCheck" />
+
+				<RadioButton
+					android:id="@+id/romantic_radio_yes"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="16dp"
+					android:buttonTint="?colorPrimary"
+					android:text="@string/yes"
+					android:textAppearance="?textAppearanceBody2"
+					tools:ignore="TextContrastCheck" />
+
+			</RadioGroup>
+
+			<!-- PRICE QUESTION -->
+
+			<TextView
+				android:id="@+id/price_question"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:text="@string/what_about_money"
+				android:textAppearance="?textAppearanceSubtitle1"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/romantic_radio_group" />
+
+			<SeekBar
+				android:id="@+id/seekbar_price"
+				style="@style/Widget.AppCompat.SeekBar.Discrete"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:indeterminate="false"
+				android:max="5"
+				android:progress="1"
+				android:progressBackgroundTint="@color/red_700"
+				android:progressTint="@color/red_500"
+				android:thumbTint="?colorPrimary"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/price_question"
+				app:tickVisible="false" />
+
+			<TextView
+				android:id="@+id/price_answer_low"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/low_prices_only"
+				android:textAppearance="?textAppearanceBody2"
+				app:layout_constraintStart_toStartOf="@id/seekbar_price"
+				app:layout_constraintTop_toBottomOf="@id/seekbar_price" />
+
+			<TextView
+				android:id="@+id/price_answer_high"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/i_can_spend"
+				android:textAppearance="?textAppearanceBody2"
+				app:layout_constraintEnd_toEndOf="@id/seekbar_price"
+				app:layout_constraintTop_toBottomOf="@id/seekbar_price" />
+
+			<CheckBox
+				android:id="@+id/price_checkbox"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:buttonTint="?colorPrimary"
+				android:text="@string/dont_care_about_price"
+				android:textAppearance="?textAppearanceBody2"
+				app:layout_constraintStart_toStartOf="@id/price_answer_low"
+				app:layout_constraintTop_toBottomOf="@id/price_answer_low" />
+
+			<!-- SPECIAL QUESTION -->
+
+			<TextView
+				android:id="@+id/special_question"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:text="@string/is_it_a_special_occasion"
+				android:textAppearance="?textAppearanceSubtitle1"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/price_checkbox" />
+
+			<Spinner
+				android:id="@+id/special_spinner"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				android:elevation="2dp"
+				android:entries="@array/special_occasions"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/special_question"
+				tools:ignore="TouchTargetSizeCheck" />
+
+			<!-- SPECIFIC QUESTION -->
+
+			<TextView
+				android:id="@+id/specific_question"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dp"
+				android:text="@string/more_specific"
+				android:textAppearance="?textAppearanceSubtitle1"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/special_spinner" />
+
+			<com.google.android.material.chip.ChipGroup
+				android:id="@+id/specific_chip_group"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/specific_question">
+
+				<!-- Options are: gastronomy, restaurant, cafe, bar, Disco -->
+				<!-- Nightlife, International, Fast food -->
+				<!-- Fancy, Posh, European, American, Asian -->
+				<!-- Outrageous, For kids, +18 -->
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/gastronomy"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/restaurant"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/cafe"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/bar"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/disco"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/nightlife"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/international"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/fast_food"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/fancy"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/posh"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/european"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/american"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/asian"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/for_kids"
+					android:textAppearance="?textAppearanceBody2" />
+
+				<com.google.android.material.chip.Chip
+					style="@style/Widget.PlanMe.Chip.Choice"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/_18"
+					android:textAppearance="?textAppearanceBody2" />
+
+			</com.google.android.material.chip.ChipGroup>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</ScrollView>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/white"
+		android:clipToPadding="false"
+		android:elevation="4dp"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<com.google.android.material.divider.MaterialDivider
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			app:dividerColor="@color/light_gray" />
+
+		<Button
+			android:id="@+id/match_plan_me"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="16dp"
+			android:layout_marginVertical="8dp"
+			android:text="@string/plan_me" />
+
+	</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
