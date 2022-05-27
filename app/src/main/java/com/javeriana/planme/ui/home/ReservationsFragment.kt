@@ -3,10 +3,13 @@ package com.javeriana.planme.ui.home
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.javeriana.planme.R
 import com.javeriana.planme.databinding.FragmentReservationsBinding
+import com.javeriana.planme.ui.adapter.ReservationItemAdapter
+import com.javeriana.planme.ui.data.SharedViewModel
 
 class ReservationsFragment : Fragment() {
 	companion object {
@@ -16,6 +19,8 @@ class ReservationsFragment : Fragment() {
 	// Binding objects to access the view elements
 	private var _binding: FragmentReservationsBinding? = null
 	private val binding get() = _binding!!
+
+	private val sharedViewModel: SharedViewModel by activityViewModels()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -34,6 +39,13 @@ class ReservationsFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		setupBottomNavigation()
+
+		binding.apply {
+			lifecycleOwner = viewLifecycleOwner
+			viewModel = sharedViewModel
+
+			reservations.adapter = ReservationItemAdapter()
+		}
 	}
 
 	private fun onAccountSelected() {

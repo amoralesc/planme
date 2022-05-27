@@ -21,6 +21,7 @@ import com.google.android.material.timepicker.TimeFormat
 import com.javeriana.planme.R
 import com.javeriana.planme.databinding.FragmentPlanDetailBinding
 import com.javeriana.planme.ui.adapter.PictureItemAdapter
+import com.javeriana.planme.ui.adapter.ProductItemAdapter
 import com.javeriana.planme.ui.adapter.ReviewItemAdapter
 import com.javeriana.planme.ui.data.SharedViewModel
 import com.javeriana.planme.util.formatDateFromMillis
@@ -96,6 +97,7 @@ class PlanDetailFragment : Fragment() {
 				Log.d(TAG, "Clicked on picture: $it")
 			}
 			reviews.adapter = ReviewItemAdapter()
+			products.adapter = ProductItemAdapter()
 
 			// Set the click listeners
 			reviewNumberContainer.setOnClickListener {
@@ -162,6 +164,9 @@ class PlanDetailFragment : Fragment() {
 				result.message?.let {
 					showReservationMessage(it)
 				}
+				if (result.success) {
+					onReservationSuccess()
+				}
 			}
 		}
 	}
@@ -190,6 +195,15 @@ class PlanDetailFragment : Fragment() {
 		Toast.makeText(
 			requireContext(), message, Toast.LENGTH_SHORT
 		).show()
+	}
+
+	private fun onReservationSuccess() {
+		sharedViewModel.startNewReservation()
+		binding.apply {
+			date.setText("")
+			time.setText("")
+			size.setText("")
+		}
 	}
 
 	private val datePicker =

@@ -142,6 +142,9 @@ class SharedViewModel : ViewModel() {
 			plan_id = selectedPlan.value?.id ?: "",
 			user_id = FirebaseAuth.getInstance().currentUser!!.uid,
 			status = "PENDING",
+			plan_name = selectedPlan.value?.name ?: "",
+			plan_address_line_1 = selectedPlan.value?.location?.address_line_1 ?: "",
+			plan_address_line_2 = selectedPlan.value?.location?.address_line_2 ?: "",
 		)
 		_reservationResult.value = Result()
 	}
@@ -172,7 +175,9 @@ class SharedViewModel : ViewModel() {
 			viewModelScope.launch(Dispatchers.IO) {
 				try {
 					planRepository.addReservation(newReservation.value!!)
-					retrieveUserReservations()
+					_userReservations.postValue(
+						userReservations.value?.plus(newReservation.value!!)
+					)
 
 					_reservationResult.postValue(
 						Result(

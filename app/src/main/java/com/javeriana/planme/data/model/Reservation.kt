@@ -9,5 +9,8 @@ data class Reservation(
 	var hour: Int? = null,
 	var minute: Int? = null,
 	var size: Int? = null,
-	val status: String? = null
+	val status: String? = null,
+	var plan_name: String? = null,
+	var plan_address_line_1: String? = null,
+	var plan_address_line_2: String? = null,
 )
