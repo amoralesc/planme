@@ -156,7 +156,8 @@
 							app:cardCornerRadius="8dp"
 							app:layout_constraintBottom_toBottomOf="@id/favorite_container"
 							app:layout_constraintEnd_toStartOf="@id/favorite_container"
-							app:layout_constraintTop_toTopOf="@id/favorite_container">
+							app:layout_constraintTop_toTopOf="@id/favorite_container"
+							tools:ignore="TouchTargetSizeCheck">
 
 							<LinearLayout
 								android:layout_width="wrap_content"
@@ -366,6 +367,8 @@
 			<LinearLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:clipChildren="false"
+				android:clipToPadding="false"
 				android:orientation="vertical"
 				android:paddingHorizontal="16dp"
 				android:paddingTop="16dp"
@@ -375,7 +378,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:background="@drawable/dark_gray_rounded_stroke_background"
-					android:elevation="4dp">
+					android:elevation="2dp">
 
 					<ImageView
 						android:id="@+id/image_date"
@@ -401,9 +404,10 @@
 						android:hint="@string/date"
 						android:importantForAutofill="no"
 						android:inputType="date"
+						android:textSize="16sp"
 						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toStartOf="@id/vertical_divider_1"
-						app:layout_constraintHorizontal_weight="1"
+						app:layout_constraintHorizontal_weight="0.45"
 						app:layout_constraintStart_toEndOf="@id/image_date"
 						app:layout_constraintTop_toTopOf="parent"
 						tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
@@ -442,9 +446,10 @@
 						android:hint="@string/time"
 						android:importantForAutofill="no"
 						android:inputType="time"
+						android:textSize="16sp"
 						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toEndOf="@id/vertical_divider_2"
-						app:layout_constraintHorizontal_weight="1"
+						app:layout_constraintHorizontal_weight="0.325"
 						app:layout_constraintStart_toEndOf="@id/image_time"
 						app:layout_constraintTop_toTopOf="parent"
 						tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
@@ -476,6 +481,7 @@
 					<EditText
 						android:id="@+id/size"
 						android:layout_width="0dp"
+						android:textSize="16sp"
 						android:layout_height="40dp"
 						android:layout_marginHorizontal="8dp"
 						android:background="@drawable/blank_text_input_background"
@@ -485,7 +491,7 @@
 						android:inputType="numberSigned"
 						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintEnd_toEndOf="parent"
-						app:layout_constraintHorizontal_weight="0.8"
+						app:layout_constraintHorizontal_weight="0.275"
 						app:layout_constraintStart_toEndOf="@id/image_size"
 						app:layout_constraintTop_toTopOf="parent"
 						tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />

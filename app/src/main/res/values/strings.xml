@@ -51,4 +51,9 @@
 	<string name="permissions_location_message">
 		The app needs location access to show to show you your location on the map
 	</string>
+	<string name="ok">OK</string>
+	<string name="cancel">Cancel</string>
+	<string name="reservation_size">Tamaño de la reserva</string>
+	<string name="reservation_failed_empty_fields">All fields must be filled</string>
+	<string name="reservation_created">Reservation created successfully</string>
 </resources>

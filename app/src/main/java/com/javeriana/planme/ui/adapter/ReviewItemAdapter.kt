@@ -9,7 +9,7 @@ import com.javeriana.planme.data.model.Review
 import com.javeriana.planme.databinding.PlanReviewListItemBinding
 import com.javeriana.planme.util.dateToString
 
-class ReviewItemAdapter() :
+class ReviewItemAdapter :
 	ListAdapter<Review, ReviewItemAdapter.ReviewItemViewHolder>(DiffCallback) {
 
 	class ReviewItemViewHolder(
