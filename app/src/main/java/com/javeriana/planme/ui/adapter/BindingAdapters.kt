@@ -24,3 +24,13 @@ fun bindRecyclerView(
 	val adapter = recyclerView.adapter as ReviewItemAdapter
 	adapter.submitList(data)
 }
+
+@JvmName("bindRecyclerViewPictures")
+@BindingAdapter("listPictures")
+fun bindRecyclerView(
+	recyclerView: RecyclerView,
+	data: List<String>?
+) {
+	val adapter = recyclerView.adapter as PictureItemAdapter
+	adapter.submitList(data)
+}

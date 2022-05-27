@@ -4,18 +4,37 @@ import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.javeriana.planme.data.model.ListReview
-import com.javeriana.planme.data.model.Plan
-import com.javeriana.planme.data.model.Review
+import com.javeriana.planme.data.model.*
 import kotlinx.coroutines.tasks.await
 
 interface PlanRepository {
+	/**
+	 * Retrieves all the plans from the database
+	 * @return a list of plans
+	 */
 	suspend fun refreshPlans(): List<Plan>
+	/**
+	 * Retrieves all the reviews of a plan from the database
+	 * @param planId the id of the plan
+	 * @return a list of reviews
+	 */
 	suspend fun getPlanReviews(planId: String): List<Review>
+	/**
+	 * Retrieves all the products of a plan from the database
+	 * @param planId the id of the plan
+	 * @return a list of products
+	 */
+	suspend fun getPlanProducts(planId: String): List<Product>
 }
 
 class FirebasePlanRepository : PlanRepository {
 
+	/**
+	 * This companion object enforces the repository pattern,
+	 * making the firebase repository a singleton.
+	 * It is used to retrieve the instance of the repository
+	 * or create it if it doesn't exist, from anywhere in the app.
+	 */
 	companion object {
 		private var instance: FirebasePlanRepository? = null
 
@@ -53,11 +72,33 @@ class FirebasePlanRepository : PlanRepository {
 				.whereEqualTo(FieldPath.documentId(), planId)
 				.get().await()
 
+		// There should only be one document
+		// However, data is a list of documents
+		// Cuz yeah lol :D
 		data.forEach {
 			val listReviews = it.toObject(ListReview::class.java)
 			reviews.addAll(listReviews.list ?: listOf())
 		}
 
 		return reviews
+	}
+
+	override suspend fun getPlanProducts(planId: String): List<Product> {
+
+		val products = mutableListOf<Product>()
+		val data =
+			database.collection("products")
+				.whereEqualTo(FieldPath.documentId(), planId)
+				.get().await()
+
+		// There should only be one document
+		// However, data is a list of documents
+		// Cuz yeah lol :D
+		data.forEach {
+			val listProducts = it.toObject(ListProduct::class.java)
+			products.addAll(listProducts.list ?: listOf())
+		}
+
+		return products
 	}
 }

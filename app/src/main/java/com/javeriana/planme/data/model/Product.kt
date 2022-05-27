@@ -5,3 +5,7 @@ data class Product(
 	val price: Double? = null,
 	val description: String? = null
 )
+
+data class ListProduct(
+	val list: List<Product>? = null
+)

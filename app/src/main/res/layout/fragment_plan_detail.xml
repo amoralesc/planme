@@ -148,8 +148,10 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_marginEnd="12dp"
+							android:clickable="true"
 							android:clipToPadding="false"
 							android:elevation="2dp"
+							android:focusable="true"
 							android:foreground="?attr/selectableItemBackground"
 							app:cardCornerRadius="8dp"
 							app:layout_constraintBottom_toBottomOf="@id/favorite_container"
@@ -280,6 +282,7 @@
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toBottomOf="@id/title_pictures"
+					app:listPictures="@{viewModel.selectedPlanPictures}"
 					tools:listitem="@layout/plan_picture_list_item" />
 
 				<TextView

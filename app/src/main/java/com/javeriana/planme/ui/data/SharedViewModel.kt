@@ -11,6 +11,10 @@ import kotlinx.coroutines.launch
 
 class SharedViewModel : ViewModel() {
 
+	companion object {
+		const val TAG = "SharedViewModel"
+	}
+
 	private val planRepository = FirebasePlanRepository.getInstance()
 
 	private val _plans: MutableLiveData<List<Plan>> = MutableLiveData()
@@ -31,6 +35,10 @@ class SharedViewModel : ViewModel() {
 	val shortSelectedPlanReviews: LiveData<List<Review>>
 		get() = _selectedPlanReviews.map { it.take(REVIEWS_PER_PLAN_DETAIL) }
 
+	private val _selectedPlanPictures: MutableLiveData<List<String>> = MutableLiveData()
+	val selectedPlanPictures: LiveData<List<String>>
+		get() = _selectedPlanPictures
+
 	init {
 		retrievePlans()
 	}
@@ -41,10 +49,10 @@ class SharedViewModel : ViewModel() {
 				val plans = planRepository.refreshPlans()
 				_plans.postValue(plans)
 
-				Log.d("SharedViewModel", "Plans: $plans")
+				Log.d(TAG, "Plans: $plans")
 			} catch (e: Exception) {
-				Log.e("SharedViewModel", "Error retrieving plans")
-				e.printStackTrace()
+				Log.e(TAG, "Error retrieving plans")
+				Log.e(TAG, e.stackTraceToString())
 			}
 		}
 	}
@@ -54,11 +62,15 @@ class SharedViewModel : ViewModel() {
 			try {
 				val reviews = planRepository.getPlanReviews(planId)
 				_selectedPlanReviews.postValue(reviews)
+				_selectedPlanPictures.postValue(
+					selectedPlan.value?.img ?: emptyList()
+				)
 
-				Log.d("SharedViewModel", "Reviews: $reviews")
+				Log.d(TAG, "Reviews: $reviews")
+				Log.d(TAG, "Pictures: ${selectedPlan.value?.img}")
 			} catch (e: Exception) {
-				Log.e("SharedViewModel", "Error retrieving plan")
-				e.printStackTrace()
+				Log.e(TAG, "Error retrieving plan")
+				Log.e(TAG, e.stackTraceToString())
 			}
 		}
 	}
