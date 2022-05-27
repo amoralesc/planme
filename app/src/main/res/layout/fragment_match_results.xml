@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context=".ui.planme.match.MatchResultsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
 
-</FrameLayout>
+	<data>
+
+		<variable
+			name="viewModel"
+			type="com.javeriana.planme.ui.data.SharedViewModel" />
+	</data>
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context=".ui.planme.match.MatchResultsFragment">
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/matched_plans"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:clipChildren="false"
+			android:clipToPadding="false"
+			android:orientation="vertical"
+			android:paddingHorizontal="16dp"
+			android:paddingVertical="16dp"
+			android:paddingBottom="60dp"
+			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+			app:listPlans="@{viewModel.matchedPlans}"
+			tools:listitem="@layout/plan_list_item" />
+
+	</FrameLayout>
+</layout>

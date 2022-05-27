@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.javeriana.planme.R
 import com.javeriana.planme.databinding.FragmentMatchResultsBinding
+import com.javeriana.planme.ui.adapter.PlanItemAdapter
 import com.javeriana.planme.ui.data.SharedViewModel
 
 class MatchResultsFragment : Fragment() {
@@ -32,7 +35,21 @@ class MatchResultsFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		// TODO
+
+		binding.apply {
+			lifecycleOwner = viewLifecycleOwner
+			viewModel = sharedViewModel
+			matchedPlans.adapter = PlanItemAdapter { plan ->
+				sharedViewModel.setSelectedPlan(plan)
+				onPlanSelected()
+			}
+		}
+	}
+
+	private fun onPlanSelected() {
+		findNavController().navigate(
+			R.id.action_matchResultsFragment_to_planDetailFragment
+		)
 	}
 
 	override fun onDestroyView() {

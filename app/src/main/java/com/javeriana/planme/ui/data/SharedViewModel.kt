@@ -11,6 +11,7 @@ import com.javeriana.planme.data.model.Reservation
 import com.javeriana.planme.data.model.Review
 import com.javeriana.planme.util.REVIEWS_PER_PLAN_DETAIL
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 class SharedViewModel : ViewModel() {
@@ -25,9 +26,9 @@ class SharedViewModel : ViewModel() {
 	val plans: LiveData<List<Plan>>
 		get() = _plans
 
-	private val _filteredPlans: MutableLiveData<List<Plan>> = MutableLiveData()
-	val filteredPlans: LiveData<List<Plan>>
-		get() = _filteredPlans
+	private val _matchedPlans: MutableLiveData<List<Plan>> = MutableLiveData()
+	val matchedPlans: LiveData<List<Plan>>
+		get() = _matchedPlans
 
 	private val _selectedPlan: MutableLiveData<Plan> = MutableLiveData()
 	val selectedPlan: LiveData<Plan>
@@ -68,6 +69,10 @@ class SharedViewModel : ViewModel() {
 			try {
 				val plans = planRepository.refreshPlans()
 				_plans.postValue(plans)
+
+				_matchedPlans.postValue(
+					plans.subList(1, 5)
+				)
 
 				Log.d(TAG, "Plans: $plans")
 			} catch (e: Exception) {
