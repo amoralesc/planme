@@ -2,6 +2,16 @@
 
 PlanMe es una aplicación móvil para dispositivos Android que permite a usuarios conocer nuevos planes y experiencias en la ciudad, filtrarlos y tener la oportunidad de planearlos mediante un sistema de reservas centralizado. La aplicación ofrece una interfaz elegante, simple y concisa para presentar dichos planes.
 
+## App Preview
+
+<img src="https://raw.githubusercontent.com/amoralesc/planme/main/screenshots/app_preview.gif" width="300">
+
+<div style="float: left">
+  <img src="https://raw.githubusercontent.com/amoralesc/planme/main/screenshots/screenshot_1.jpg" width="200">
+  <img src="https://raw.githubusercontent.com/amoralesc/planme/main/screenshots/screenshot_2.jpg" width="200">
+  <img src="https://raw.githubusercontent.com/amoralesc/planme/main/screenshots/screenshot_3.jpg" width="200">
+</div>
+
 ## Especificaciones 📋
 
 La aplicación está desarrollada para dispositivos Android con una versión SDK mínima de 24.
